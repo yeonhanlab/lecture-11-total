@@ -1,12 +1,12 @@
 import { useState, type SubmitEvent, useEffect } from "react";
 import styled from "styled-components";
-import { FaPlus } from "react-icons/fa";
+import { FaCheck, FaPlus, FaTrash } from "react-icons/fa";
 
 type TodoType = {
     id: number;
     text: string;
     isCompleted: boolean;
-}
+};
 const Container = styled.div`
     max-width: 600px;
     margin: 0 auto;
@@ -62,6 +62,54 @@ const AddButton = styled.button`
     }
 `;
 
+const TodoList = styled.ul`
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+`;
+
+const TodoItem = styled.li<{ $isCompleted: boolean }>`
+    background-color: ${props => props.theme.colors.background.paper};
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 1px solid ${props => props.theme.colors.divider};
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.5s;
+
+    &:hover {
+        border-color: ${props => props.theme.colors.primary};
+    }
+
+    span {
+        flex: 1;
+        font-size: 16px;
+        color: ${props =>
+            props.$isCompleted
+                ? props.theme.colors.text.disabled
+                : props.theme.colors.text.default};
+        text-decoration: ${props => (props.$isCompleted ? "line-through" : "none")};
+    }
+`;
+
+const IconButton = styled.button<{ $colorType: "success" | "error" }>`
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    opacity: 0.6;
+    transition: all 0.3s;
+    color: ${props => props.theme.colors[props.$colorType]};
+
+    &:hover {
+        opacity: 1;
+    }
+`;
+
 function TodoPage() {
     const [inputValue, setInputValue] = useState(""); // 이ㄴ풋에 입력된 값 관리
     const [todos, setTodos] = useState<TodoType[]>(() => {
@@ -77,9 +125,9 @@ function TodoPage() {
         event.preventDefault();
         if (!inputValue.trim()) return;
         const newTodo: TodoType = {
-          id: Date.now(),     // 고유값으로, 사용자가 "저장하는 지금 시간"을 id로 쓰겠다.
-          text: inputValue,
-          isCompleted: false,
+            id: Date.now(), // 고유값으로, 사용자가 "저장하는 지금 시간"을 id로 쓰겠다.
+            text: inputValue,
+            isCompleted: false,
         };
         setTodos([...todos, newTodo]);
         setInputValue("");
@@ -88,28 +136,48 @@ function TodoPage() {
     useEffect(() => {
         // todos라는 state는 현재 Array를 저장하고 있기 때문에
         // 그 값을 localStorage에 저장하기 위해서는 JSON 형식으로 바꿔줄 필요가 있음
-        localStorage.setItem("todos", JSON.stringify(todos))
-    },[todos])
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
+
+    const toggleTodo = (id: number) => {
+        setTodos(
+            todos.map(value => {
+                return value.id === id ? { ...value, isCompleted: !value.isCompleted } : value;
+            }),
+        );
+    };
+
+    const deleteTodo = (id: number) => {
+        setTodos(todos.filter(value => value.id !== id));
+    };
 
     return (
         <Container>
             <Title>Todo List</Title>
             <InputSection onSubmit={handleAddToDo}>
                 <StyledInput
-                placeholder={"오늘의 할 일을 입력하세요."}
-                value={inputValue}
-                onChange={e => setInputValue(e.target.value)}
+                    placeholder={"오늘의 할 일을 입력하세요."}
+                    value={inputValue}
+                    onChange={e => setInputValue(e.target.value)}
                 />
                 <AddButton type={"submit"}>
                     <FaPlus />
                 </AddButton>
             </InputSection>
 
-            <ul>
+            <TodoList>
                 {todos.map((value, index) => (
-                    <li key={index}>{value.text}</li>
+                    <TodoItem key={index} $isCompleted={value.isCompleted}>
+                        <IconButton $colorType={"success"} onClick={() => toggleTodo(value.id)}>
+                            <FaCheck />
+                        </IconButton>
+                        <span>{value.text}</span>
+                        <IconButton $colorType={"error"} onClick={() => deleteTodo(value.id)}>
+                            <FaTrash />
+                        </IconButton>
+                    </TodoItem>
                 ))}
-            </ul>
+            </TodoList>
         </Container>
     );
 }
