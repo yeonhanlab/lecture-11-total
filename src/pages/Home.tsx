@@ -4,11 +4,11 @@ import styled from "styled-components";
 import { Link } from "react-router";
 
 type ProjectType = {
-    title: string,
-    desc: string,
-    path: string,
+    title: string;
+    desc: string;
+    path: string;
     icon: ReactNode;
-}
+};
 
 const projectList: ProjectType[] = [
     {
@@ -55,8 +55,8 @@ const Container = styled.div`
     gap: 30px;
 `;
 
-const WelcomSection = styled.section`
-    padding: 40px;
+const WelcomeSection = styled.section`
+    padding: 140px;
     border-radius: 20px;
     background-color: ${props => props.theme.colors.background.paper};
     border: 1px solid ${props => props.theme.colors.divider};
@@ -67,11 +67,6 @@ const Title = styled.h2`
     font-weight: 800;
     color: ${props => props.theme.colors.primary};
     margin-bottom: 10px;
-`;
-
-const Description = styled.p`
-    font-size: 14px;
-    color: ${props => props.theme.colors.text.disabled};
 `;
 
 const CardContainer = styled.div`
@@ -111,16 +106,21 @@ const ProjectTitle = styled.h3`
     font-size: 20px;
     font-weight: 700;
     color: ${props => props.theme.colors.text.default};
-
 `;
+
+const Description = styled.p`
+    font-size: 14px;
+    color: ${props => props.theme.colors.text.disabled};
+`;
+
 
 function Home() {
     return (
         <Container>
-            <WelcomSection>
+            <WelcomeSection>
                 <Title>My Project Dashboard</Title>
                 <Description>지금까지 구축한 포트폴리오 리스트입니다.</Description>
-            </WelcomSection>
+            </WelcomeSection>
 
             <CardContainer>
                 {projectList.map((value, index) => (

@@ -12,7 +12,7 @@ const Container = styled.div`
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 `;
 
 const Title = styled.h2`
@@ -36,7 +36,7 @@ const StyledInput = styled.input`
     border-radius: 8px;
     border: 1px solid ${props => props.theme.colors.divider};
     background-color: ${props => props.theme.colors.background.default};
-    color: ${props => props.theme.colors.text.default}:
+    color: ${props => props.theme.colors.text.default};
     font-size: 16px;
     outline: none;
     
@@ -111,7 +111,7 @@ const IconButton = styled.button<{ $colorType: "success" | "error" }>`
 `;
 
 function TodoPage() {
-    const [inputValue, setInputValue] = useState(""); // 이ㄴ풋에 입력된 값 관리
+    const [inputValue, setInputValue] = useState(""); // 인풋에 입력된 값 관리
     const [todos, setTodos] = useState<TodoType[]>(() => {
         // todos라는 state가 TodoPage 컴포넌트가 불러와질 때 마련되는데,
         // 그 저장소와 초기값은 이 함수에서 리턴된 값으로 결정됨
