@@ -22,13 +22,20 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-    padding: 12px;
+    padding: 16px;
     border: none;
     background-color: ${props => props.theme.colors.primary};
     color: white;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    transition: all 0.5s;
+    
+    &:hover {
+        opacity: 0.9;
+    }
 
 `;
 

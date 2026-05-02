@@ -13,6 +13,7 @@ export type MovieItem = {
 const Title = styled.h2`
     font-size: 28px;
     font-weight: 800;
+    text-align: center;
     color: ${props => props.theme.colors.primary};
 `;
 
@@ -20,24 +21,25 @@ const Content = styled.div`
     display: flex;
     flex-direction: column;
     gap: 16px;
+    height: 100vh;
 `;
-
 
 const Main = styled.main`
     gap: 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 20px;
     border-radius: 16px;
     background-color: ${props => props.theme.colors.background.paper};
     border: 1px solid ${props => props.theme.colors.divider};
-    
 `;
 const Box = styled.div`
     width: 100%;
     background-color: ${props => props.theme.colors.background.paper};
     flex: 1;
     border-radius: 16px;
+    height: 100vh;
 `;
 
 const Result = styled.h3`
@@ -51,9 +53,7 @@ const List = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    margin-top: 100px;
 `;
-
 
 type ApiResponseType = { Search: MovieItem[] };
 
@@ -86,22 +86,11 @@ function MoviePage() {
 
     return (
         <Content>
-            <Main>
                 <Title>Movie Search</Title>
+            <Main>
                 <SearchBar />
             </Main>
-            <Box>
-                <Result>검색 결과 : {k}</Result>
 
-                {loading && <p>Loading...</p>}
-                {error && <p>{error}</p>}
-
-                <List>
-                    {list.map((value, index) => (
-                        <MovieCard movie={value} key={index} />
-                    ))}
-                </List>
-            </Box>
         </Content>
     );
 }

@@ -18,6 +18,7 @@ const Container = styled.div`
 const Title = styled.h2`
     font-size: 28px;
     font-weight: 800;
+    text-align: center;
     color: ${props => props.theme.colors.primary};
 `;
 
