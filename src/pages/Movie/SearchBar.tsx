@@ -46,7 +46,7 @@ function SearchBar() {
         event.preventDefault();
         const k = keyword.trim();
         if (!k) return;
-        navigate(`/movie?keyword=${encodeURIComponent(k)}`);
+        navigate(`/movie-search?keyword=${encodeURIComponent(k)}`);
     };
 
     const onChange = (event: ChangeEvent<HTMLInputElement, HTMLInputElement>) => {

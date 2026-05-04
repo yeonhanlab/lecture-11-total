@@ -1,4 +1,4 @@
-import type { MovieItem } from "./MoviePage.tsx";
+import type { MovieItem } from "./MovieHome.tsx";
 import { Link } from "react-router";
 import styled from "styled-components";
 
@@ -7,7 +7,7 @@ type Props = {
 };
 
 const Card = styled(Link)`
-    width: 200px;
+    width: calc((100% - 60px) / 4);
     border-radius: 12px;
     padding: 10px;
     background-color: white;
@@ -22,6 +22,10 @@ const Card = styled(Link)`
         width: 100%;
         border-radius: 8px;
     }
+    
+    span {
+        font-size: 0.8rem;
+    }
 
     &:hover {
         transform: scale(1.03);
@@ -30,9 +34,9 @@ const Card = styled(Link)`
 
 function MovieCard({ movie }: Props) {
     return (
-        <Card to={`/detail/${movie.imdbID}`}>
+        <Card to={`/movie-detail/${movie.imdbID}`}>
             <img src={movie.Poster} alt={movie.Title} />
-            <h3>{movie.Title}</h3>
+            <h4>{movie.Title}</h4>
             <span>{movie.Year}</span>
         </Card>
     );
