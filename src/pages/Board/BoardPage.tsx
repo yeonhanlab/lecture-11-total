@@ -68,6 +68,10 @@ const Tr = styled.tr`
     &:hover {
         background-color: ${props => props.theme.colors.background.default};
     }
+    
+    &:last-child td {
+        border-bottom: none;
+    }
 `;
 
 const Td = styled.td`
@@ -79,6 +83,7 @@ const No = styled.td`
     width: 80px;
     text-align: center;
     font-size: 14px;
+    border-bottom: 1px solid ${props => props.theme.colors.divider};
 `;
 
 
