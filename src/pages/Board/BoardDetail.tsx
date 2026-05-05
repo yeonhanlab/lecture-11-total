@@ -65,7 +65,7 @@ const Content = styled.div`
 const Post = styled.div`
     font-size: 1.15rem;
     line-height: 1.8;
-    white-space: pre-wrap;
+    white-space: pre-wrap; 
 `;
 
 function BoardDetail() {
