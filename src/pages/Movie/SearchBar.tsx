@@ -5,6 +5,8 @@ import styled from "styled-components";
 const Box = styled.form`
     display: flex;
     gap: 10px;
+    width: 100%;
+    
 `;
 
 const Input = styled.input`
@@ -15,6 +17,8 @@ const Input = styled.input`
     color: ${props => props.theme.colors.text.default};
     font-size: 16px;
     outline: none;
+    width: 100%;
+    flex: 1;
 
     &:focus {
         border-color: ${props => props.theme.colors.primary};

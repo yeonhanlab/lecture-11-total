@@ -25,6 +25,7 @@ const Head = styled.header`
     gap: 20px;
     padding: 20px;
     border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     color: ${props => props.theme.colors.primary};
     background-color: ${props => props.theme.colors.background.paper};
     border: 1px solid ${props => props.theme.colors.divider};
@@ -35,6 +36,13 @@ const List = styled.div`
     flex-wrap: wrap;
     gap: 20px;
     margin-top: 50px;
+`;
+
+const Title = styled.span`
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
 `;
 
 function MovieSearch() {
@@ -69,7 +77,7 @@ useEffect(() => {
     return (
         <Wrap>
             <Head>
-            <h2>검색 결과</h2>
+            <Title>검색 결과</Title>
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             <SearchBar />
