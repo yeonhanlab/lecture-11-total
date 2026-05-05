@@ -12,6 +12,7 @@ import MovieDetail from "../pages/Movie/MovieDetail.tsx";
 import BoardDetail from "../pages/Board/BoardDetail.tsx";
 import BookDetail from "../pages/Book/BookDetail.tsx";
 import BookSearch from "../pages/Book/BookSearch.tsx";
+import RocketDetail from "../pages/Rocket/RocketDetail.tsx";
 
 const GetRouter = createBrowserRouter([
     {
@@ -27,6 +28,7 @@ const GetRouter = createBrowserRouter([
             { path: "Board", element: <BoardPage /> },
             { path: "board-detail/:id", element: <BoardDetail />},
             { path: "Rocket", element: <RocketPage /> },
+            { path: "rocket-detail/:id", element: <RocketDetail />},
             { path: "Book", element: <BookPage /> },
             { path: "book-search", element: <BookSearch />},
             { path: "book-detail/:id", element: <BookDetail />}
