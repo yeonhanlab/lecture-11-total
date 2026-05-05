@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import styled from "styled-components";
 import BookSearchBar from "./BookSearchBar.tsx";
-import BookCard from "./BookCard.tsx";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
@@ -54,6 +53,50 @@ const Title = styled.span`
     padding: 10px;
 `;
 
+const Linked = styled(Link)`
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    background: white;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    transition: all 0.5s;
+    
+&:hover {
+        background-color: #f3f3f3;
+}
+
+`;
+
+const Cover = styled.img`
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+`;
+
+const NoCover = styled.img`
+    width: 60px;
+    height: 90px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const BookTitle = styled.span`
+    font-weight: 600;
+    margin-bottom: 4px;
+`;
+
+const Authors = styled.p`
+    font-size: 12px;
+    color: #555;
+`;
+
+
 function BookSearch() {
     const [list, setList] = useState<BookItem[]>([]);
     const [loading, setLoading] = useState(true);
@@ -94,7 +137,22 @@ function BookSearch() {
             </Head>
             <List>
                 {list.map((value, index) => (
-                    <BookCard key={index} book={value} />
+                    <Linked key={index} to={`/book-detail/${value.id}`} >
+                        {value.volumeInfo.imageLinks ? (
+                            <Cover
+                                src={value.volumeInfo.imageLinks?.thumbnail}
+                                alt={value.volumeInfo.title}
+                            />
+                        ) : (
+                            <NoCover>No Cover</NoCover>
+                        )}
+                        <div>
+                            <BookTitle>{value.volumeInfo.title}</BookTitle>
+                            <Authors>
+                                {value.volumeInfo.author?.join(", ")}
+                            </Authors>
+                        </div>
+                    </Linked>
                 ))}
             </List>
         </Wrap>
