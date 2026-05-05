@@ -24,7 +24,7 @@ const BackButton = styled.button`
     position: absolute; /* [중요] 스티커 선언! */
     bottom: 20px;
     right: 20px;
-    background-color: #f0f0f0;
+    background-color: ${props => props.theme.colors.background.paper};
     color: ${props => props.theme.colors.text.default};
     padding: 10px 24px;
     border-radius: 30px;

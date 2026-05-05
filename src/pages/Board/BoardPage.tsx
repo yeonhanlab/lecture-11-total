@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router";
 
-type PostType = {
+export type PostType = {
     userId: number;
     id: number;
     title: string;
@@ -118,7 +118,7 @@ function BoardPage() {
                         <Tr key={index}>
                             <No>{value.id}</No>
                             <Td>
-                                <Linked to={`/${value.id}`}>{value.title}</Linked>
+                                <Linked to={`/board-detail/${value.id}`}>{value.title}</Linked>
                             </Td>
                             <No>{value.userId}</No>
                         </Tr>
