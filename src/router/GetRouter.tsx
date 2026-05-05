@@ -11,6 +11,7 @@ import MovieSearch from "../pages/Movie/MovieSearch.tsx";
 import MovieDetail from "../pages/Movie/MovieDetail.tsx";
 import BoardDetail from "../pages/Board/BoardDetail.tsx";
 import BookDetail from "../pages/Book/BookDetail.tsx";
+import BookSearch from "../pages/Book/BookSearch.tsx";
 
 const GetRouter = createBrowserRouter([
     {
@@ -27,6 +28,7 @@ const GetRouter = createBrowserRouter([
             { path: "board-detail/:id", element: <BoardDetail />},
             { path: "Rocket", element: <RocketPage /> },
             { path: "Book", element: <BookPage /> },
+            { path: "book-search", element: <BookSearch />},
             { path: "book-detail/:id", element: <BookDetail />}
 
             //     "/"로 시작하는 주소로 사용자가 들어왔다면,

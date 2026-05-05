@@ -77,7 +77,7 @@ useEffect(() => {
     return (
         <Wrap>
             <Head>
-            <Title>검색 결과</Title>
+            <Title>검색 결과 : {k} </Title>
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             <SearchBar />
