@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import styled from "styled-components";
-import SearchBar from "./SearchBar.tsx";
-import MovieCard from "./MovieCard.tsx";
+import MovieSearchBar from "./components/MovieSearchBar.tsx";
+import MovieCard from "./components/MovieCard.tsx";
 
 export type MovieItem = {
     imdbID: string;
@@ -80,7 +80,7 @@ useEffect(() => {
             <Title>검색 결과 : {k} </Title>
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            <SearchBar />
+            <MovieSearchBar />
             </Head>
             <List>
                 {list.map((value, index) => (

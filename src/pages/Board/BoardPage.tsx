@@ -123,7 +123,7 @@ function BoardPage() {
                         <Tr key={index}>
                             <No>{value.id}</No>
                             <Td>
-                                <Linked to={`/board-detail/${value.id}`}>{value.title}</Linked>
+                                <Linked to={`/board/detail/${value.id}`}>{value.title}</Linked>
                             </Td>
                             <No>{value.userId}</No>
                         </Tr>

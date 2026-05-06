@@ -48,7 +48,7 @@ function BookSearchBar() {
         event.preventDefault();
         const k = keyword.trim();
         if (!k) return;
-        navigate(`/book-search?keyword=${encodeURIComponent(k)}`);
+        navigate(`/book/search?keyword=${encodeURIComponent(k)}`);
     };
 
     const onChange = (event: ChangeEvent<HTMLInputElement, HTMLInputElement>) => {

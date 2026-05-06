@@ -43,14 +43,14 @@ const Button = styled.button`
 
 `;
 
-function SearchBar() {
+function MovieSearchBar() {
     const navigate = useNavigate();
     const [keyword, setKeyword] = useState("");
     const onSubmit = (event: SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
         const k = keyword.trim();
         if (!k) return;
-        navigate(`/movie-search?keyword=${encodeURIComponent(k)}`);
+        navigate(`/movie/search?keyword=${encodeURIComponent(k)}`);
     };
 
     const onChange = (event: ChangeEvent<HTMLInputElement, HTMLInputElement>) => {
@@ -65,4 +65,4 @@ function SearchBar() {
     );
 }
 
-export default SearchBar;
+export default MovieSearchBar;

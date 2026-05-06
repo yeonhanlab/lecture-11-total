@@ -22,16 +22,36 @@ const GetRouter = createBrowserRouter([
             { index: true, element: <Home /> },
             { path: "todo", element: <TodoPage /> },
             { path: "coin", element: <CoinPage /> },
-            { path: "Movie", element: <MovieHome /> },
-            { path: "movie-search", element: <MovieSearch /> },
-            { path: "movie-detail/:id", element: <MovieDetail />},
-            { path: "Board", element: <BoardPage /> },
-            { path: "board-detail/:id", element: <BoardDetail />},
-            { path: "Rocket", element: <RocketPage /> },
-            { path: "rocket-detail/:id", element: <RocketDetail />},
-            { path: "Book", element: <BookPage /> },
-            { path: "book-search", element: <BookSearch />},
-            { path: "book-detail/:id", element: <BookDetail />}
+            {
+                path: "movie",
+                children: [
+                    { index: true, element: <MovieHome /> },
+                    { path: "search", element: <MovieSearch /> },
+                    { path: "detail/:id", element: <MovieDetail /> },
+                ],
+            },
+            {
+                path: "board",
+                children: [
+                    { index: true, element: <BoardPage /> },
+                    { path: "detail/:id", element: <BoardDetail /> },
+                ],
+            },
+            {
+                path: "rocket",
+                children: [
+                    { index: true, element: <RocketPage /> },
+                    { path: "detail/:id", element: <RocketDetail /> },
+                ],
+            },
+            {
+                path: "book",
+                children: [
+                    { index: true, element: <BookPage /> },
+                    { path: "search", element: <BookSearch /> },
+                    { path: "detail/:id", element: <BookDetail /> },
+                ],
+            },
 
             //     "/"로 시작하는 주소로 사용자가 들어왔다면,
             //     <MainLayout /> 먼저 화면에 출력되고,

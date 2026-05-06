@@ -1,4 +1,4 @@
-import type { MovieItem } from "./MovieHome.tsx";
+import type { MovieItem } from "../MovieHome.tsx";
 import { Link } from "react-router";
 import styled from "styled-components";
 
@@ -34,7 +34,7 @@ const Card = styled(Link)`
 
 function MovieCard({ movie }: Props) {
     return (
-        <Card to={`/movie-detail/${movie.imdbID}`}>
+        <Card to={`/movie/detail/${movie.imdbID}`}>
             <img src={movie.Poster} alt={movie.Title} />
             <h4>{movie.Title}</h4>
             <span>{movie.Year}</span>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router";
 import styled from "styled-components";
-import BookSearchBar from "./BookSearchBar.tsx";
+import BookSearchBar from "./components/BookSearchBar.tsx";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
@@ -137,7 +137,7 @@ function BookSearch() {
             </Head>
             <List>
                 {list.map((value, index) => (
-                    <Linked key={index} to={`/book-detail/${value.id}`} >
+                    <Linked key={index} to={`/book/detail/${value.id}`} >
                         {value.volumeInfo.imageLinks ? (
                             <Cover
                                 src={value.volumeInfo.imageLinks?.thumbnail}

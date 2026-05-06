@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BookSearchBar from "./BookSearchBar.tsx";
+import BookSearchBar from "./components/BookSearchBar.tsx";
 
 
 const Title = styled.h2`

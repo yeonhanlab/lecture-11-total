@@ -1,4 +1,4 @@
-import SearchBar from "./SearchBar.tsx";
+import MovieSearchBar from "./components/MovieSearchBar.tsx";
 import styled from "styled-components";
 
 export type MovieItem = {
@@ -45,7 +45,7 @@ function MovieHome() {
         <Content>
                 <Title>Movie Search</Title>
             <Main>
-                <SearchBar />
+                <MovieSearchBar />
             </Main>
         </Content>
     );

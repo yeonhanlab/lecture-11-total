@@ -101,7 +101,7 @@ function RocketPage() {
     return (
         <Container>
             <Header>
-                <Title>🚀 SpaceX Archive<</Title>
+                <Title>🚀 SpaceX Archive</Title>
             </Header>
 
             <Main>
